@@ -55,47 +55,6 @@ jobs:
         # are issues targeting that with newer XCode versions.
         # As likely nobody is using 10.6 anymore, targeting 10.9 is acceptable.
         # See https://github.com/pandas-dev/pandas/issues/23424#issuecomment-446393981.
-        - os-image: macos-latest
-          os-name: mac
-          macos-min-version: '10.9'
-          python-version: '3.6'
-          numpy-version: '1.11.*'
-        - os-image: macos-latest
-          os-name: mac
-          macos-min-version: '10.9'
-          python-version: '3.7'
-          numpy-version: '1.14.*'
-        - os-image: macos-latest
-          os-name: mac
-          macos-min-version: '10.9'
-          python-version: '3.8'
-          numpy-version: '1.17.*'
-        - os-image: macos-latest
-          os-name: mac
-          macos-min-version: '10.9'
-          python-version: '3.9'
-          numpy-version: '1.19.*'
-
-        - os-image: windows-latest
-          os-name: windows
-          python-version: '3.6'
-          python-arch: '64'
-          numpy-version: '1.11'
-        - os-image: windows-latest
-          os-name: windows
-          python-version: '3.7'
-          python-arch: '64'
-          numpy-version: '1.14'
-        - os-image: windows-latest
-          os-name: windows
-          python-version: '3.8'
-          python-arch: '64'
-          numpy-version: '1.17'
-        - os-image: windows-latest
-          os-name: windows
-          python-version: '3.9'
-          python-arch: '64'
-          numpy-version: '1.19'
 
     runs-on: ${{ matrix.config.os-image }}
 
@@ -103,6 +62,11 @@ jobs:
     - uses: actions/checkout@v1
       with:
         submodules: true
+
+    - name: Set up QEMU
+      if: matrix.config.os-name == 'linux'
+      id: qemu
+      uses: docker/setup-qemu-action@v1
 
     - name: Build wheels (Linux)
       if: matrix.config.os-name == 'linux'
