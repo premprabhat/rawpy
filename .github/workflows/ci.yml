@@ -64,7 +64,7 @@ jobs:
         submodules: true
 
     - name: Set up QEMU
-      if: matrix.config.os-name == 'linux'
+      if: matrix.config.docker-image == 'quay.io/pypa/manylinux2014_aarch64'
       id: qemu
       uses: docker/setup-qemu-action@v1
 
