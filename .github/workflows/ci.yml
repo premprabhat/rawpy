@@ -34,17 +34,17 @@ jobs:
           os-name: linux
           docker-image: quay.io/pypa/manylinux2014_aarch64
           python-version: '3.6'
-          numpy-version: '1.11.*'
+          numpy-version: '1.19.*'
         - os-image: ubuntu-latest
           os-name: linux
           docker-image: quay.io/pypa/manylinux2014_aarch64
           python-version: '3.7'
-          numpy-version: '1.14.*'
+          numpy-version: '1.19.*'
         - os-image: ubuntu-latest
           os-name: linux
           docker-image: quay.io/pypa/manylinux2014_aarch64
           python-version: '3.8'
-          numpy-version: '1.17.*'
+          numpy-version: '1.19.*'
         - os-image: ubuntu-latest
           os-name: linux
           docker-image: quay.io/pypa/manylinux2014_aarch64
